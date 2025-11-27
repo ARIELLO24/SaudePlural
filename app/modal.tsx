@@ -11,7 +11,7 @@ export default function ModalScreen() {
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/modal.tsx" />
 
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
+      {/* Usar una barra de estado clara en iOS para tener en cuenta el espacio negro encima del modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
   );

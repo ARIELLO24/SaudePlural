@@ -9,16 +9,16 @@ import 'react-native-reanimated';
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  // Captura quaisquer erros lançados pelo componente Layout.
+  ErrorBoundary
 } from 'expo-router';
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  // Garante que recarregar em `/modal` mantenha um botão de voltar presente.
+  initialRouteName: 'index',
 };
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+// Impede que a tela de splash seja ocultada automaticamente antes que o carregamento dos ativos seja concluído.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -27,7 +27,7 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  // O Expo Router usa Error Boundaries para capturar erros na árvore de navegação.
   useEffect(() => {
     if (error) throw error;
   }, [error]);
@@ -51,7 +51,11 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="login" options={{ title: 'Login' }} />
+        <Stack.Screen name="register" options={{ title: 'Cadastro' }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="details/[id]" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
